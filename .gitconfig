@@ -1,0 +1,60 @@
+# ~/.gitconfig - Git configuration
+# Personalise the [user] section or let git prompt you on first use.
+
+[user]
+	# name  = Your Name
+	# email = you@example.com
+
+[core]
+	editor       = vim
+	autocrlf     = input      # convert CRLF -> LF on commit (Linux/macOS)
+	whitespace   = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false            # merge by default when pulling
+
+[push]
+	default       = simple
+	autoSetupRemote = true    # automatically set upstream on first push
+
+[fetch]
+	prune = true              # remove stale remote-tracking branches
+
+[merge]
+	conflictstyle = diff3     # show base in conflict markers
+
+[diff]
+	colorMoved = zebra        # highlight moved lines differently
+
+[color]
+	ui = auto
+
+[alias]
+	# Short-hand commands
+	st   = status -s
+	co   = checkout
+	br   = branch
+	ci   = commit
+	lg   = log --oneline --graph --decorate --all
+	last = log -1 HEAD --stat
+	wdiff= diff --word-diff
+
+	# Undo the last commit, keeping changes staged
+	undo = reset --soft HEAD~1
+
+	# Show files changed in last commit
+	changed = diff-tree --no-commit-id -r --name-only HEAD
+
+	# Stash helpers
+	save  = stash push -m
+	pop   = stash pop
+
+[credential]
+	helper = store             # use 'manager' on Windows, 'osxkeychain' on macOS
+
+[url "https://github.com/"]
+	insteadOf = gh:            # allows: git clone gh:user/repo

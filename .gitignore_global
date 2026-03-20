@@ -1,0 +1,35 @@
+# ~/.gitignore_global - Global git ignore patterns
+# Linked by .gitconfig → core.excludesfile
+
+# ── OS-generated files ────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# ── Editor temp/swap files ────────────────────────────────────────────────────
+*.swp
+*.swo
+*~
+\#*\#
+.#*
+
+# ── IDE / tool directories ────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.iml
+
+# ── Build artifacts ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.class
+*.o
+*.so
+dist/
+build/
+node_modules/
+.env

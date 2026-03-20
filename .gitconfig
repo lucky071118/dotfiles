@@ -1,0 +1,28 @@
+[core]
+	# Normalize line endings to LF on commit (standard on Linux/Codespaces)
+	autocrlf = input
+
+[init]
+	defaultBranch = main
+
+[pull]
+	# Always merge on pull, no surprise rebases
+	rebase = false
+
+[push]
+	# Push the current branch to its upstream tracking branch
+	default = current
+	# Automatically set upstream when pushing a new branch
+	autoSetupRemote = true
+
+[merge]
+	# Show base, ours, and theirs in conflict markers for clearer diffs
+	conflictstyle = zdiff3
+
+[rerere]
+	# Remember how you resolved a conflict so the same resolution is reused
+	enabled = true
+
+[branch]
+	# New branches track their remote counterpart by default
+	autosetupmerge = always

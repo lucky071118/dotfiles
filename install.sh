@@ -12,7 +12,6 @@ echo "==> Installing dotfiles from ${DOTFILES_DIR}"
 # List of dotfiles to symlink into the home directory
 DOTFILES=(
   .bashrc
-  .zshrc
   .gitconfig
   .gitignore_global
   .vimrc
@@ -47,7 +46,7 @@ if command -v vim &>/dev/null && [ -f "${HOME}/.vimrc" ]; then
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   fi
   echo "==> Installing Vim plugins (headless)"
-  vim +PlugInstall +qall --headless 2>/dev/null || true
+  vim -es +PlugInstall +qall 2>/dev/null || true
 fi
 
 echo "==> Dotfiles installation complete!"

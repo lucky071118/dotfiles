@@ -73,7 +73,7 @@ alias path='echo ${PATH} | tr ":" "\n"'
 # ── Functions ────────────────────────────────────────────────────────────────
 # Create directory and cd into it
 mkcd() {
-  mkdir -p "$1" && cd "$1"
+  mkdir -p "$1" && cd "$1" || return
 }
 
 # Show a short summary of the current git repo

@@ -8,7 +8,6 @@ Personal dotfiles for **GitHub Codespaces** and general Unix/Linux development e
 |------|---------|
 | `install.sh` | Entry-point script run automatically by GitHub Codespaces |
 | `.bashrc` | Bash interactive shell config (prompt, aliases, functions) |
-| `.zshrc` | Zsh interactive shell config (prompt, aliases, functions) |
 | `.gitconfig` | Git defaults, aliases, and URL shortcuts |
 | `.gitignore_global` | Global git ignore patterns (linked by `.gitconfig`) |
 | `.vimrc` | Vim configuration with vim-plug plugins |
@@ -37,5 +36,5 @@ bash install.sh
 ## Customisation tips
 
 * **Git identity** – uncomment and fill in `[user] name` and `email` in `.gitconfig`, or just run `git config --global user.name "..."` which will write to `~/.gitconfig`.
-* **Shell** – both `.bashrc` and `.zshrc` share the same aliases and functions; edit them in one place and apply the same change in the other.
+* **Shell** – GitHub Codespaces uses **bash** by default. All shell customisation lives in `.bashrc`.
 * **Vim plugins** – add `Plug` lines in `.vimrc` and run `:PlugInstall` inside Vim.

@@ -1,6 +1,10 @@
 # Codespaces Dotfiles
 
-Personal dotfiles for GitHub Codespaces. Workflow is VS Code first with minimal terminal use.
+This repository provides shared dotfiles for all GitHub Codespaces across projects. It ensures a consistent, reliable environment for every Codespace. Use this repository as your Codespaces dotfiles to standardize setup and configuration.
+
+This repository provides shared dotfiles for all GitHub Codespaces across projects. It ensures a consistent, reliable environment for every Codespace. Use this repository as your Codespaces dotfiles to standardize setup and configuration.
+
+Personal dotfiles for GitHub Codespaces. Workflow is VS Code first.
 
 ## How It Works
 

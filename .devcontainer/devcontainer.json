@@ -1,4 +1,17 @@
 {
+  "name": "Dotfiles",
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {}
+  "postCreateCommand": "bash install.sh",
+  "remoteEnv": {
+    "SYNC_COPILOT_CUSTOMIZATIONS": "0"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  }
 }

@@ -74,20 +74,6 @@ SYNC_COPILOT_CUSTOMIZATIONS=0 ./install.sh
 2. Set this repository as your dotfiles repository
 3. Every new Codespace will run `install.sh` automatically
 
-## Dev Container
-
-A `.devcontainer/devcontainer.json` is included so you can open this repository itself inside a container (via VS Code **Dev Containers** extension or GitHub Codespaces).
-
-What happens on container creation:
-
-| Step | Details |
-|---|---|
-| Base image | `mcr.microsoft.com/devcontainers/universal:2` |
-| `postCreateCommand` | `bash install.sh` — applies `.gitconfig`, `.editorconfig`, and installs OpenSpec CLI |
-| VS Code extensions | EditorConfig, GitHub Copilot, GitHub Copilot Chat |
-
-> **Note:** `SYNC_COPILOT_CUSTOMIZATIONS` is set to `0` inside the dev container because the workspace already contains the source skills/prompts — there is nothing to copy.
-
 ## Future Additions
 
 Things that belong in dotfiles (not covered by Settings Sync):

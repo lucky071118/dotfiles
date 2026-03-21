@@ -68,7 +68,7 @@ sync_copilot_customizations() {
   fi
 
   source_root="$REPO_DIR/.github"
-  target_root="$TARGET_WORKSPACE/.github"
+  target_root="$HOME/.copilot"
 
   if [[ ! -d "$source_root/skills" && ! -d "$source_root/prompts" ]]; then
     echo "Skipped Copilot customizations sync: no source skills/prompts found"
@@ -81,25 +81,25 @@ sync_copilot_customizations() {
     if [[ -d "$source_root/skills" ]]; then
       mkdir -p "$target_root/skills"
       rsync -a --ignore-existing "$source_root/skills/" "$target_root/skills/"
-      echo "Synced .github/skills to $target_root/skills (no overwrite)"
+      echo "Synced .github/skills to $target_root/skills (no overwrite, centralized to ~/.copilot/skills)"
     fi
 
     if [[ -d "$source_root/prompts" ]]; then
       mkdir -p "$target_root/prompts"
       rsync -a --ignore-existing "$source_root/prompts/" "$target_root/prompts/"
-      echo "Synced .github/prompts to $target_root/prompts (no overwrite)"
+      echo "Synced .github/prompts to $target_root/prompts (no overwrite, centralized to ~/.copilot/prompts)"
     fi
   else
     if [[ -d "$source_root/skills" ]]; then
       mkdir -p "$target_root/skills"
       cp -rn "$source_root/skills/." "$target_root/skills/"
-      echo "Synced .github/skills to $target_root/skills (no overwrite, cp fallback)"
+      echo "Synced .github/skills to $target_root/skills (no overwrite, centralized to ~/.copilot/skills, cp fallback)"
     fi
 
     if [[ -d "$source_root/prompts" ]]; then
       mkdir -p "$target_root/prompts"
       cp -rn "$source_root/prompts/." "$target_root/prompts/"
-      echo "Synced .github/prompts to $target_root/prompts (no overwrite, cp fallback)"
+      echo "Synced .github/prompts to $target_root/prompts (no overwrite, centralized to ~/.copilot/prompts, cp fallback)"
     fi
   fi
 }

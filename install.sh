@@ -7,7 +7,6 @@ set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TARGET_WORKSPACE="${GITHUB_WORKSPACE:-$PWD}"
-OPENSPEC_PACKAGE="@fission-ai/openspec"
 OPENSPEC_VERSION="${OPENSPEC_VERSION:-latest}"
 OPENSPEC_MIN_NODE_VERSION="20.19.0"
 SYNC_COPILOT_CUSTOMIZATIONS="${SYNC_COPILOT_CUSTOMIZATIONS:-1}"
@@ -21,42 +20,6 @@ version_gte() {
   [[ "$first" == "$rhs" ]]
 }
 
-install_openspec() {
-  local node_version
-  local install_target
-  local installed_version="not installed"
-
-  if ! command -v node >/dev/null 2>&1; then
-    echo "Skipped OpenSpec CLI: node is not available"
-    return 0
-  fi
-
-  if ! command -v npm >/dev/null 2>&1; then
-    echo "Skipped OpenSpec CLI: npm is not available"
-    return 0
-  fi
-
-  node_version="$(node --version | sed 's/^v//')"
-  if ! version_gte "$node_version" "$OPENSPEC_MIN_NODE_VERSION"; then
-    echo "Skipped OpenSpec CLI: Node.js $node_version is below required $OPENSPEC_MIN_NODE_VERSION"
-    return 0
-  fi
-
-  if command -v openspec >/dev/null 2>&1; then
-    installed_version="$(openspec --version 2>/dev/null || echo "unknown")"
-  fi
-
-  install_target="${OPENSPEC_PACKAGE}@${OPENSPEC_VERSION}"
-  echo "Installing OpenSpec CLI from $install_target"
-
-  if npm install -g "$install_target"; then
-    installed_version="$(openspec --version 2>/dev/null || echo "unknown")"
-    echo "Installed OpenSpec CLI ($installed_version)"
-  else
-    echo "Skipped OpenSpec CLI: npm install failed for $install_target"
-    echo "Previous OpenSpec version: $installed_version"
-  fi
-}
 
 sync_copilot_customizations() {
   local source_root
@@ -116,8 +79,6 @@ if [[ -f "$REPO_DIR/.editorconfig" ]]; then
   echo "Applied .editorconfig"
 fi
 
-# Install OpenSpec CLI from the official npm package when the environment supports it.
-install_openspec
 
 # Copy Copilot skills/prompts into the active workspace for every new Codespace.
 sync_copilot_customizations

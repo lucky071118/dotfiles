@@ -44,7 +44,6 @@ All files default to UTF-8, LF line endings, and a trailing newline.
 `install.sh` also installs OpenSpec from its official npm package:
 
 ```bash
-npm install -g @fission-ai/openspec@latest
 ```
 
 This only runs when both `node` and `npm` are available and Node.js is `20.19.0` or newer, which matches the upstream prerequisite.
